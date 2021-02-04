@@ -1,4 +1,4 @@
-#import code_horloge
+""" Test that it works ! """
 from unatsort import natsort,natsorted
 
 def asserte(message,left,right):

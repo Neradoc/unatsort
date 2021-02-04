@@ -1,3 +1,5 @@
+""" Test on circuitpython: list board pins in natsort order """
+
 import microcontroller,board
 from unatsort import natsort
 allpins = []
