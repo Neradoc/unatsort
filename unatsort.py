@@ -1,7 +1,7 @@
 import re as _re
 
 def _coerce_to_int(x):
-	if x != "" and x[0] in '0123456789+-':
+	if x != "" and x[0] in '0123456789':
 		try:
 			return int(x)
 		except ValueError:
@@ -10,11 +10,11 @@ def _coerce_to_int(x):
 		return x
 
 #_numbers = _re.compile(r'(\d+)')
-#return [x for x in _numbers.split(input) if x != ""]
+#return [x for x in _numbers.split(str_in) if x != ""]
 _spliter = _re.compile("(.*?)(\d+)(.*)")
-def _split_components(input):
+def _split_components(str_in):
 	dec = []
-	ss = input
+	ss = str_in
 	while ss != "":
 		mm = _spliter.match(ss)
 		if mm:
@@ -26,17 +26,14 @@ def _split_components(input):
 			break
 	return dec
 
-def _tokenize(input):
-	sc = _split_components(input)
+def _tokenize(str_in):
+	sc = _split_components(str_in)
 	return [_coerce_to_int(x) for x in sc]
-
-def compare(left,right):
-	return tokenize(left) < tokenize(right)
 
 def natsort(liste):
 	liste.sort(key=_tokenize)
 
 def natsorted(liste):
-	ls = liste
+	ls = list(liste)
 	ls.sort(key=_tokenize)
 	return ls
